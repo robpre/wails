@@ -70,6 +70,10 @@ func (a *AppConfig) merge(in *AppConfig) error {
 	if in.Title != "" {
 		a.Title = runtime.ProcessEncoding(in.Title)
 	}
+	if in.HTML != "" {
+		a.HTML = in.HTML
+		a.defaultHTML = in.HTML
+	}
 
 	if in.Colour != "" {
 		a.Colour = in.Colour
