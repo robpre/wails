@@ -1,6 +1,8 @@
 package wails
 
 import (
+	"fmt"
+
 	"github.com/leaanthony/mewn"
 	"github.com/wailsapp/wails/runtime"
 )
@@ -72,7 +74,7 @@ func (a *AppConfig) merge(in *AppConfig) error {
 	}
 	if in.HTML != "" {
 		a.HTML = in.HTML
-		a.defaultHTML = in.HTML
+		a.defaultHTML = fmt.Sprintf("data:text/html,%s", in.HTML)
 	}
 
 	if in.Colour != "" {
