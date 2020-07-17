@@ -139,6 +139,8 @@ func BuildDocker(binaryName string, buildMode string, projectOptions *ProjectOpt
 		"--rm",
 		"-v", fmt.Sprintf("%s:/build", filepath.Join(fs.Cwd(), "build")),
 		"-v", fmt.Sprintf("%s:/source", fs.Cwd()),
+		// HACK: used by minput to inject this custom wails version into the docker image
+		"-v", fmt.Sprintf("%s:/wails", filepath.Join(fs.Cwd(), "..", "wails")),
 		"-e", fmt.Sprintf("LOCAL_USER_ID=%v", userid),
 		"-e", fmt.Sprintf("FLAG_LDFLAGS=%s", ldFlags(projectOptions, buildMode)),
 		"-e", "FLAG_V=false",
